@@ -1,5 +1,5 @@
 import java.util.Random;
-
+//commento test
 public class Boat {
     private int x0;
     private int y0;
