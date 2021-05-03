@@ -259,7 +259,28 @@ public class GraphicGrid extends Canvas implements MouseListener, MouseMotionLis
         }
     }
     public void mouseClicked(MouseEvent e) {
-        mouseClicked = true;
+        if(SwingUtilities.isLeftMouseButton(e)){
+            mouseClicked = true;
+        }
+        else{
+            switch(orientation){
+                case 1:
+                    orientation++;
+                    break;
+                case 2:
+                    orientation=-2;
+                    break;
+                case -2:
+                    orientation++;
+                    break;
+                case -1:
+                    orientation = 1;
+                    break;
+                default:
+                    orientation = 1;
+                    break;
+            }
+        }
     }
     public void mouseEntered(MouseEvent e) {
         mouseEntered = true;
