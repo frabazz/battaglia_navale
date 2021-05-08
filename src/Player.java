@@ -25,7 +25,7 @@ public class Player extends Grid{
         M = super.getMatrix();
     }
 
-    public void SinkBoat(int x, int y){
+    public void sinkBoat(int x, int y){
         if(super.isBoat(x, y)){
             int[][] coordinates = super.getBoat(x, y).getCoordinates();
             for(int i = 0;i < coordinates.length;i++){
@@ -66,7 +66,6 @@ public class Player extends Grid{
     public boolean setBoat(int x, int y, int orientation, int length, int index){
         Boat b = new Boat(x, y, orientation, length);
         if(b.errorBoat(M)){
-            System.out.println("errore nel posizionamento");
             return false;
         }
         else{
@@ -89,7 +88,6 @@ public class Player extends Grid{
         int coordinates[] = {0, 0};
         int randomLaps = 0;
         do{
-            System.out.println("generating random numbers");
             coordinates = super.getRandomCoordinates();
             coordinates[0] = Math.abs(coordinates[0]);
             coordinates[1] = Math.abs(coordinates[1]);
@@ -100,7 +98,6 @@ public class Player extends Grid{
             for(int i = 0;i < matrix.length;i++){
                 for(int j = 0;j < matrix.length;j++){
                     if(M[i][j] == 1){
-                        System.out.println("protocollo emergenza!");
                         coordinates[0] = i;
                         coordinates[1] = j;
                         break;
@@ -113,7 +110,7 @@ public class Player extends Grid{
 
     }
 
-    public boolean IsBoat(int x, int y){
+    public boolean isBoat(int x, int y){
         System.out.println();
         super.printGrid();
         return super.isBoat(x, y);
