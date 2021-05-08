@@ -1,5 +1,5 @@
 import java.util.Random;
-//commento test
+
 public class Boat {
     private int x0;
     private int y0;
@@ -29,7 +29,7 @@ public class Boat {
             orientation = (((rand.nextInt()*99))%2)+1;
             orientation = (((rand.nextInt()*99)%2))==0?orientation : orientation*-1;
         }
-        while(ThereIsBoat(grid));
+        while(thereIsBoat(grid));
     }
 
     public int[][] getCoordinates(){
@@ -47,7 +47,7 @@ public class Boat {
         return coordinates;
     }
 
-    public boolean ThereIsBoat(int grid[][]){
+    public boolean thereIsBoat(int grid[][]){
         int xPlus = Math.abs(orientation)==1?0 : 1;
         int yPlus = Math.abs(orientation)==1?1 : 0;
         int sign = orientation>0?1 : -1;
