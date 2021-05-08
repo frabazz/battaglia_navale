@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.Random;
 
 public class Grid {
@@ -34,7 +33,6 @@ public class Grid {
         boats = new Boat[boatsLength.length];
     }
     public void generateBoats(int[] boatsLength){
-        System.out.println("hai cagato?");
         boats = new Boat[boatsLength.length];
         for(int i = 0;i < boatsLength.length;i++){
             boats[i] = new Boat(width, height, boatsLength[i], M);
@@ -71,7 +69,6 @@ public class Grid {
     }
 
     public void addBoatIndex(Boat b, int index){
-        System.out.println("trying with index = " + index);
         boats[index] = b;
         int coordinates[][] = b.getCoordinates();
         for(int i = 0;i < coordinates.length;i++){
