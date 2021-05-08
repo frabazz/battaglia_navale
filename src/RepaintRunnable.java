@@ -22,7 +22,6 @@ public class RepaintRunnable implements Runnable, ActionListener {
        timer.start();
     }
 
-    @Override
     public void actionPerformed(ActionEvent e) {
       grid.repaint();
     }
