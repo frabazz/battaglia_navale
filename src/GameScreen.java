@@ -42,7 +42,6 @@ public class GameScreen {
         this.boatsLength = boatsLength;
         this.width = width;
         this.height = height;
-        //bot.printPlayerGrid();
     }
 
     private GridBagConstraints getConstraints(int gridx, int gridy, int weightx, int weighty, int position) {
@@ -146,8 +145,8 @@ public class GameScreen {
         updateRoundButton();
         for (int length : boatsLength) {
             setPlayerMessage("sistema la barca " + length);
-            while (!PlayerGrid.selectBoat(player, length)) setPlayerError("Bestia mettila bene");
-            setPlayerMessage("a posto vita");
+            while (!PlayerGrid.selectBoat(player, length)) setPlayerError("errore nel posizionamento, riprova");
+            setPlayerMessage("perfetto");
         }
         Boat[] selectedBoats = PlayerGrid.getBoats();
         for(int i = 0;i < selectedBoats.length;i++){
@@ -156,16 +155,14 @@ public class GameScreen {
         setPlayerMessage("Barche posizionate correttamente");
         PlayerGrid.removeListeners();
         Thread.sleep(1500);
-        //System.out.println();
         while ((!player.hasLost() || !bot.hasLost()) && round<=20) {
             round++;
             updateRoundButton();
             setPlayerMessage("seleziona una casella nemica : ");
             int[] coordinates = getCoordinates();
-            //System.out.printf("affondando: (%d;%d) ", coordinates[0], coordinates[1]);
-            if (bot.IsBoat(coordinates[0], coordinates[1])) {
-                BotGrid.SinkBoat(bot.getBoat(coordinates[0], coordinates[1]));
-                bot.SinkBoat(coordinates[0], coordinates[1]);
+            if (bot.isBoat(coordinates[0], coordinates[1])) {
+                BotGrid.sinkBoat(bot.getBoat(coordinates[0], coordinates[1]));
+                bot.sinkBoat(coordinates[0], coordinates[1]);
                 setPlayerMessage("Hai affondato la barca nemica!");
                 playerScore++;
                 updateScoreLabel();
@@ -180,10 +177,9 @@ public class GameScreen {
             setBotMessage("adesso tocca a me");
             Thread.sleep(1000);
             int[] botCoordinates = bot.getRandomCoordinates();
-            System.out.printf("il bot ha scelto coordinate: (%d;%d)", botCoordinates[0], botCoordinates[1]);
             if(player.isBoat(botCoordinates[0], botCoordinates[1])){
-                PlayerGrid.SinkBoat(player.getBoat(botCoordinates[0], botCoordinates[1]));
-                player.SinkBoat(botCoordinates[0], botCoordinates[1]);
+                PlayerGrid.sinkBoat(player.getBoat(botCoordinates[0], botCoordinates[1]));
+                player.sinkBoat(botCoordinates[0], botCoordinates[1]);
                 setBotMessage("ti ho affondato la barca!");
                 botScore++;
                 updateScoreLabel();
@@ -195,7 +191,6 @@ public class GameScreen {
                 setBotMessage("Acqua");
                 Thread.sleep(1000);
             }
-            //System.out.printf("Coordinate selezionata : (%d;%d)\n", coordinates[0], coordinates[1]);
         }
         String messagelost = player.hasLost()? "peccato hai perso! ricominciare?" : "complimenti hai vinto! ricominciare?";
         int decision =  JOptionPane.showConfirmDialog (null, messagelost,"Ricominciare?",JOptionPane.YES_NO_OPTION);
@@ -205,8 +200,5 @@ public class GameScreen {
             frame.setVisible(false);
         }
         return decision;
-        /*PlayerGrid.selectBoat(player, 2);
-        PlayerGrid.selectBoat(player, 5);
-        PlayerGrid.selectBoat(player, 7);*/
     }
 }
