@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -17,7 +16,6 @@ import java.awt.event.*;
  * 3 -> acqua
  * -1 -> error
  * -2 -> red && nemico che sta selezionando
-
   */
 public class GraphicGrid extends Canvas implements MouseListener, MouseMotionListener, MouseWheelListener {
     int[][] M;
@@ -59,13 +57,6 @@ public class GraphicGrid extends Canvas implements MouseListener, MouseMotionLis
         this.isEnemy = isEnemy;
         letters = cellSize/2;
         initTimer();
-        /*System.out.println("bellali");
-        for(int i = 0;i < M.length;i++){
-            for(int j  = 0;j < M.length;j++){
-                System.out.print(originalM[i][j] + " ");
-            }
-            System.out.println();
-        }*/
     }
 
 
@@ -73,7 +64,6 @@ public class GraphicGrid extends Canvas implements MouseListener, MouseMotionLis
         paintThread = new Thread(new RepaintRunnable(this, refreshTime));
         paintThread.start();
     }
-
 
 
     public void removeListeners(){
@@ -138,17 +128,10 @@ public class GraphicGrid extends Canvas implements MouseListener, MouseMotionLis
         int[][] changedCoordinates = new int[l][2];
         int[] CoordinatesValues = new int[l];
         while(!mouseClicked){
-            //Calcolo la posizione della matrice a partire dal
             int Ymatrix = (mouseX/cellSize)-1;
             int Xmatrix = (mouseY/cellSize)-1;
-            //System.out.printf("X, Y matrix : (%d;%d)\n", Xmatrix, Ymatrix);
             Boat b = new Boat(Xmatrix, Ymatrix, orientation, l);
             int[][] Coordinates = b.getCoordinates();
-            /*System.out.printf("\nCoordinates : ");
-            for(int i = 0;i < l;i++)System.out.printf("(%d;%d)", Coordinates[i][0], Coordinates[i][1]);
-            System.out.printf("\nChanged Coordinates : ");
-            for(int i = 0;i < l;i++)System.out.printf("(%d;%d)", changedCoordinates[i][0], changedCoordinates[i][1]);
-            */
 
             for(int i = 0;i < Coordinates.length;i++){
                 if(Coordinates[i][0] != changedCoordinates[i][0] || Coordinates[i][1] != changedCoordinates[i][1])toRepaint=true;
@@ -225,7 +208,7 @@ public class GraphicGrid extends Canvas implements MouseListener, MouseMotionLis
         M[x][y] = 3;
     }
 
-    public void SinkBoat(Boat b){
+    public void sinkBoat(Boat b){
         int[][] coordinates = b.getCoordinates();
         for(int i = 0;i < coordinates.length;i++){
             M[coordinates[i][0]][coordinates[i][1]] = 2;
@@ -259,28 +242,7 @@ public class GraphicGrid extends Canvas implements MouseListener, MouseMotionLis
         }
     }
     public void mouseClicked(MouseEvent e) {
-        if(SwingUtilities.isLeftMouseButton(e)){
-            mouseClicked = true;
-        }
-        else{
-            switch(orientation){
-                case 1:
-                    orientation++;
-                    break;
-                case 2:
-                    orientation=-2;
-                    break;
-                case -2:
-                    orientation++;
-                    break;
-                case -1:
-                    orientation = 1;
-                    break;
-                default:
-                    orientation = 1;
-                    break;
-            }
-        }
+        mouseClicked = true;
     }
     public void mouseEntered(MouseEvent e) {
         mouseEntered = true;
@@ -289,10 +251,8 @@ public class GraphicGrid extends Canvas implements MouseListener, MouseMotionLis
         mouseEntered = false;
     }
     public void mousePressed(MouseEvent e) {
-        //System.out.println("Mouse Pressed");
     }
     public void mouseReleased(MouseEvent e) {
-        //System.out.println("Mouse Released");
     }
 
     public void mouseDragged(MouseEvent e) {
