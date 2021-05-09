@@ -1,5 +1,15 @@
 import java.util.Random;
-
+/*
+* La classe Boat rappresenta la barca dal punto di vista logico.
+* La barca è definita da una coordinata di origine O(x0, y0) e da
+* un orientamento:
+* 1 corrisponde a positivo nell'asse delle ascisse
+* 2 corrisponde a positivo nell'asse delle ordinate
+* -1 corrisponde a negativo nell'asse delle ascisse
+* -2 corrisponde a negativo nell'asse delle ordinate
+*
+*
+* */
 public class Boat {
     private int x0;
     private int y0;
@@ -11,7 +21,6 @@ public class Boat {
     * -1 -> x-
     * -2 -> y-
     * */
-
 
     Boat(int x0, int y0, int orientation, int length){
         this.x0 = x0;
@@ -47,7 +56,7 @@ public class Boat {
         return coordinates;
     }
 
-    public boolean thereIsBoat(int grid[][]){
+    public boolean thereIsBoat(int[][] grid){
         int xPlus = Math.abs(orientation)==1?0 : 1;
         int yPlus = Math.abs(orientation)==1?1 : 0;
         int sign = orientation>0?1 : -1;
@@ -61,7 +70,7 @@ public class Boat {
         return false;
     }
 
-    public boolean errorBoat(int grid[][]){
+    public boolean errorBoat(int[][] grid){
         int[][] coordinates = this.getCoordinates();
         for(int i = 0; i < coordinates.length;i++){
             int x = coordinates[i][0];

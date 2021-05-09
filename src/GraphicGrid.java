@@ -1,15 +1,12 @@
 import java.awt.*;
 import java.awt.event.*;
+/*
+* La classe GraphicGrid si occupa di gestire la parte grafica della matrice,
+* e la gestione dell'input. Come si può notare dai commenti sottostanti, i numeri
+* presenti nella matrice hanno un valore diverso rispettto a quelli della classe grid
+ */
 
 /*
- * +1 -> x+
- * +2 -> y+
- * -1 -> x-
- * -2 -> y-
- * */
-
-/*
-
  * 0 -> vuota
  * 1 -> barca
  * 2 -> affondata
@@ -17,6 +14,8 @@ import java.awt.event.*;
  * -1 -> error
  * -2 -> red && nemico che sta selezionando
   */
+
+
 public class GraphicGrid extends Canvas implements MouseListener, MouseMotionListener, MouseWheelListener {
     int[][] M;
     static int[][] originalM;

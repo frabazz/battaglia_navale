@@ -193,6 +193,7 @@ public class GameScreen {
             }
         }
         String messagelost = player.hasLost()? "peccato hai perso! ricominciare?" : "complimenti hai vinto! ricominciare?";
+        if(!player.hasLost() && !bot.hasLost())messagelost = "sono finiti i round!ricominciare!";
         int decision =  JOptionPane.showConfirmDialog (null, messagelost,"Ricominciare?",JOptionPane.YES_NO_OPTION);
         if(decision == JOptionPane.YES_OPTION){
             frame.getContentPane().removeAll();

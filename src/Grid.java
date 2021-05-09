@@ -1,5 +1,11 @@
 import java.util.Random;
-
+/*
+* La classe Grid si occupa di gestire la matrice dal punto di vista logico
+* spesso per sincronizzare la parte logica con la parte grafica, che ha una matrice
+* propria
+*
+*
+* */
 public class Grid {
     /*
     * 0 -> no nave
@@ -70,14 +76,14 @@ public class Grid {
 
     public void addBoatIndex(Boat b, int index){
         boats[index] = b;
-        int coordinates[][] = b.getCoordinates();
+        int[][] coordinates = b.getCoordinates();
         for(int i = 0;i < coordinates.length;i++){
             M[coordinates[i][0]][coordinates[i][1]] = 1;
         }
     }
 
     public int[] getRandomCoordinates(){
-        int coordinates[] = new int[2];
+        int[] coordinates = new int[2];
         Random rand = new Random(System.currentTimeMillis());
         coordinates[0] = (((int)(rand.nextInt()*1000))%width);
         coordinates[1] = (((int)(rand.nextInt()*1000))%height);

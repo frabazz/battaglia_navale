@@ -1,5 +1,12 @@
 import java.util.Vector;
-
+/*
+*
+* La classe player si occupa di gestire la parte logica
+* del giocatore e consta dei metodi della classe grid, che eredita.
+*
+*
+*
+* */
 public class Player extends Grid{
     /*
     * 0 -> vuota
@@ -11,16 +18,16 @@ public class Player extends Grid{
     private String username;
     private int[][] M;
 
-    Player(String username, int width, int heigth, int[] boatsLength, boolean automaticSpawning){
-        super(width, heigth);
+    Player(String username, int width, int height, int[] boatsLength, boolean automaticSpawning){
+        super(width, height);
         this.username = username;
         super.generateBoats(boatsLength);
         this.M = super.getMatrix();
         randomCoordinates = new Vector<int[]>();
     }
 
-    Player(String username, int width, int heigth, int[] boatsLength){
-        super(width, heigth, boatsLength);
+    Player(String username, int width, int height, int[] boatsLength){
+        super(width, height, boatsLength);
         this.username = username;
         M = super.getMatrix();
     }
@@ -75,7 +82,7 @@ public class Player extends Grid{
         }
     }
 
-    private boolean usedRandomCoordinates(int coordinates[]){
+    private boolean usedRandomCoordinates(int[] coordinates){
         for(int i = 0;i < randomCoordinates.size();i++){
             int[] usedCoordinates = randomCoordinates.get(i);
             if(coordinates[0] == usedCoordinates[0] && coordinates[1] == usedCoordinates[1])return true;
@@ -85,7 +92,7 @@ public class Player extends Grid{
 
 
     public int[] getRandomCoordinates(){
-        int coordinates[] = {0, 0};
+        int[] coordinates = {0, 0};
         int randomLaps = 0;
         do{
             coordinates = super.getRandomCoordinates();
