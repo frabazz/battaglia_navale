@@ -22,7 +22,7 @@ public class FileReader {
         try {
             Path pathtoFile = Paths.get(fileName);
             File myFile = new File(pathtoFile.toAbsolutePath().toString());
-            System.out.println(myFile.exists());
+            //System.out.println(myFile.exists());
             Scanner s = new Scanner(myFile);
             int length = s.nextInt();
             boatsLength = new int[length];

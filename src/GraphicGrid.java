@@ -165,7 +165,7 @@ public class GraphicGrid extends Canvas implements MouseListener, MouseMotionLis
             }
             delay(refreshTime/2);
         }
-        System.out.println(boatError);
+        //System.out.println(boatError);
         if(boatError){
             for(int i = 0;i < changedCoordinates.length;i++){
                 M[changedCoordinates[i][0]][changedCoordinates[i][1]] = CoordinatesValues[i];

@@ -40,7 +40,7 @@ public class Main {
         while(decision == JOptionPane.YES_OPTION);
         System.exit(2);
 
-        System.out.println();
+        //System.out.println();
 
 }
 }

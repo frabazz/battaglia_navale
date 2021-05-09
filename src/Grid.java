@@ -70,7 +70,7 @@ public class Grid {
     }
     public boolean isBoat(int x, int y){
         if(M[x][y] == 1)return true;
-        else{System.out.println(M[x][y]);}
+        //else{System.out.println(M[x][y]);}
         return false;
     }
 

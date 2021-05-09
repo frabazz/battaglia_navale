@@ -119,7 +119,6 @@ public class Player extends Grid{
 
     public boolean isBoat(int x, int y){
         System.out.println();
-        super.printGrid();
         return super.isBoat(x, y);
     }
 
